@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using BankBlog.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using BankBlog.Models;
 
 namespace BankBlog
 {
@@ -34,6 +35,8 @@ namespace BankBlog
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.AddDbContext<blogsContext>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
